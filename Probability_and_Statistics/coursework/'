@@ -1,0 +1,337 @@
+\documentclass[12pt]{article}
+%% Package imports
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\usepackage{pgfplotstable}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage{physics}
+\usepackage[left=2cm,right=2cm,top=2cm,bottom=2cm]{geometry}
+\usepackage{multirow}
+\usepackage{booktabs}
+\usepackage{float}
+\usepackage{verbatim}
+\usepackage{amsthm}
+\usepackage{fancyhdr}
+\usepackage[shortlabels]{enumitem}
+\renewcommand{\baselinestretch}{1.5}
+
+%% Commands for inserting big braces.
+\newcommand\lb{\left\lbrace}
+\newcommand\rb{\right\rbrace}
+
+%% Math symbols
+\newcommand\Q{\mathbb{Q}}
+\newcommand\R{\mathbb{R}}
+\newcommand\N{\mathbb{N}}
+\newcommand\W{\overline{W}}
+\newcommand\intR{\int_{-\infty}^\infty}
+
+\newcommand\st{\text{ such that }}
+\parindent 0ex
+
+%% Page style settings
+\pagestyle{fancy}
+\fancyfoot{}
+\fancyhead[L]{\slshape\MakeUppercase{Probability And Statistics for JMC}}
+\fancyhead[R]{\slshape{CID: 01871147}}
+\fancyfoot[C]{\thepage}
+\begin{document}
+\title{Probability And Statistics for JMC Autumn 2021 Coursework}
+\date{\today}
+\author{Szymon Kubica, CID: 01871147}
+\maketitle
+
+\pagebreak
+\section*{Question 1.}
+
+\subsection*{(a)}
+
+In order to show that the sample mean of weights, $ \overline{W} $ is an unbiased estimator of the integral $ I $,
+we need to show that:
+\[ E (\overline{W} | I) = I.\]
+Let us consider the left-hand side of the expression above. After using the linearity of expectation, we obtain:
+\begin{equation} E (\overline{W} | I) = E\left[ \frac{1}{n}\sum_{i = 1}^n \frac{g(X_i)}{f(X_i)}\right] =\frac{1}{n}\sum_{i = 1}^n  E\left[ \frac{g(X_i)}{f(X_i)}\right]  .\end{equation}
+
+If we now consider the expectation of the weight $ W_i $ above:
+\[ E\left[ \frac{g(X_i)}{f(X_i)}\right] = \int_{-\infty}^\infty \frac{g(x)}{f(x)} f(x) dx =\int_{-\infty}^\infty g(x)dx = I. \]
+That is because each random variable $ X_i $ is sampled from $ X $ with pdf $ f(x) $ 
+and so in order to obtain the expected value of $\dfrac{g(X_i)}{f(X_i)}$ 
+we need to integrate over the range $ \mathbb{X} $ while multiplying by the pdf of $ X $
+Hence, as shown above the integrand simplifies and we get $ I $.
+
+Now if we substitute what we have established so far back into the equation $(1)$, we get:
+\begin{equation} \frac{1}{n}\sum_{i = 1}^n  E\left[ \frac{g(X_i)}{f(X_i)}\right] =\frac{1}{n}\sum_{i = 1}^n  I = \frac{1}{n} n I = I    .\end{equation}
+
+Therefore, we may conclude that $ E (\overline{W} | I) = I $ and hence $ \overline{W} $ is an unbiased estimator of
+the integral $ I $. 
+
+\subsection*{(b)}
+
+To show that the variance of this estimator is proportional to $ \left( E\left[\dfrac{g(X)^2}{f(X)^2}\right] - I^2\right)$
+let us use the shorthand formula for the variance of a random variable $ X $ which was derived in the lectures:
+\[ Var (X) = E (X^2) - (E(X))^2.\]
+Applying it to $ \overline{W} $ we obtain:
+\[ Var (\overline{W}) = E \left[\left(\frac{1}{n}\sum_{i = 1}^n \frac{g(X_i)}{f(X_i)}\right)^2\right] - (E(\overline{W}))^2. \]
+Using previously established fact that the expectation of $ \overline{W} $ is $ I $, and the linearity of 
+the expectation we get:
+\begin{equation} 
+Var (\overline{W}) = \frac{1}{n^2} E \left[\left(\sum_{i = 1}^n \frac{g(X_i)}{f(X_i)}\right)^2\right] - I^2.
+\end{equation}
+
+Let us now consider the expectation of the square of the sum of weights, 
+multiplying out and applying linearity results in:
+\begin{equation}
+E \left[\left(\sum_{i=1}^n \frac{g(X_i)}{f(X_i)}\right)^2\right] 
+= E \left[\sum_{i = 1}^n \frac{g(X_i)^2}{f(X_i)^2} \right] + \sum_{i=1}^n \sum_{j=1, j \neq i}^n \lb E \left[ \frac{g(X_i)}{f(X_i)} \frac{g(X_j)}{f(X_j)} \right] \rb.
+\end{equation}
+
+Now if we focus on the expectation of the product of two weights above, we can treat it as the 
+expectation of a product of joint random variables $ \frac{g(X_i)}{f(X_i)} $ and $ \frac{g(X_j)}{f(X_j)}$. We can compute it as follows: 
+\[ E \left[ \frac{g(X_i)}{f(X_i)} \frac{g(X_j)}{f(X_j)} \right] 
+= \int_{-\infty}^\infty \lb \int_{-\infty}^\infty \frac{g(x)}{f(x)} \frac{g(y)}{f(y)} f(x) dx\rb f(y) dy. \]
+Now after simplifying the integrand, and noticing expressions for $ I $ we get: 
+\[ \int_{-\infty}^\infty \lb \int_{-\infty}^\infty \frac{g(x)}{f(x)} \frac{g(y)}{f(y)} f(x) dx\rb f(y)dy 
+= \int_{-\infty}^\infty \lb \int_{-\infty}^\infty g(x)dx\rb \frac{g(y)}{f(y)} f(y)dy
+= I\int_{-\infty}^\infty g(y) dy = I^2. \]
+
+If we now substitute it back into equation $(4)$, we obtain:
+\begin{equation} 
+E \left[\sum_{i = 1}^n \frac{g(X_i)^2}{f(X_i)^2} \right] + \sum_{i=1}^n \sum_{j=1, j \neq i}^n \lb E \left[ \frac{g(X_i)}{f(X_i)} \frac{g(X_j)}{f(X_j)} \right] \rb 
+= E \left[\sum_{i = 1}^n \frac{g(X_i)^2}{f(X_i)^2} \right] + \sum_{i=1}^n \sum_{j=1, j \neq i}^n I^2.
+\end{equation}
+Now by counting the terms in the double sum, we get:
+\[
+E \left[\sum_{i = 1}^n \frac{g(X_i)^2}{f(X_i)^2} \right] + \sum_{i=1}^n \sum_{j=1, j \neq i}^n I^2 
+= E \left[\sum_{i = 1}^n \frac{g(X_i)^2}{f(X_i)^2} \right] + n (n - 1) I^2. 
+\]
+
+After substituting the above result into $ (3) $, we have:
+\begin{equation}
+  Var (\overline{W}) = \frac{1}{n^2} \left(E \left[\sum_{i = 1}^n \frac{g(X_i)^2}{f(X_i)^2} \right] + n (n - 1) I^2 
+ \right) - I^2.
+\end{equation}
+If we then simplify, it becomes:
+\[
+  \frac{1}{n^2} \left(E \left[\sum_{i = 1}^n \frac{g(X_i)^2}{f(X_i)^2} \right] + n (n - 1) I^2 \right) - I^2
+  =\frac{1}{n^2} \left(E \left[\sum_{i = 1}^n \frac{g(X_i)^2}{f(X_i)^2} \right]\right) + \left( \frac{n(n-1)}{n^2} - 1 \right)I^2.
+\]
+After further simplification, we obtain:
+\begin{equation}
+  Var (\overline{W}) 
+  =\frac{1}{n^2} \left(E \left[\sum_{i = 1}^n \frac{g(X_i)^2}{f(X_i)^2} \right]\right) - \frac{1}{n}I^2.
+\end{equation}
+
+Let us now evaluate the expectation in the bracket above by using linearity and the fact that each $X_i$
+is sampled from the same distribution $X$:
+\[
+  E \left[\sum_{i = 1}^n \frac{g(X_i)^2}{f(X_i)^2}\right]
+  = \sum_{i = 1}^n E \left[ \frac{g(X_i)^2}{f(X_i)^2} \right]
+  = n E\left[ \frac{g(X)^2}{f(X)^2} \right].
+\]
+If we now substitute it back into equation $ (7) $, we get the final expression:
+\begin{equation}
+  Var (\overline{W}) 
+=\frac{1}{n} \left(E \left[\sum_{i = 1}^n \frac{g(X_i)^2}{f(X_i)^2} \right] - I^2 \right).
+\end{equation}
+
+Therefore we deduce that the variance of the estimator $ \overline{W} $ is indeed proportional to 
+$ \left(E \left[\sum_{i = 1}^n \dfrac{g(X_i)^2}{f(X_i)^2} \right] - I^2 \right) $.
+Now if we compute the standard deviation using the formula above, we get:
+\begin{equation}
+  \sigma (\overline{W}) 
+  =\frac{1}{\sqrt{n}} \left(E \left[\sum_{i = 1}^n \frac{g(X_i)^2}{f(X_i)^2} \right] - I^2 \right)^\frac{1}{2}.
+\end{equation}
+And so the standard deviation is inversly proportional to the square root of the sample size $ n $.
+
+\section*{(c)}
+
+Assume $ g(x) $ was non-negative. In order to show that the choice of the RV $ X $ such that $ f(x) \propto g(x) $ 
+makes the variance $ 0 $, let us consider what it means for $ f(x) $ and $ g(x) $ to be proportional.
+If they are indeed proportional, then there exists a constant $ k \in \R $ such that:
+\[ f(x) = k g(x). \]
+Note that the condition $ g(x) $ is non-negative is necessary, because otherwise for positive $ k $, $ f(x) = kg(x) $
+wouldn't be a valid pdf as pdf needs to be non-negative.
+
+If we now plug it into our expression for $ \overline{W} $, we get:
+\[ \overline{W} = \frac{1}{n} \sum_{i=1}^n \frac{g(X_i)}{f(X_i)} 
+= \frac{1}{n} \sum_{i=1}^n \frac{g(X_i)}{kg(X_i)} =\frac{1}{n} \sum_{i=1}^n \frac{1}{k} 
+= \frac{1}{n} n \frac{1}{k} = \frac{1}{k}.  \]
+
+Therefore, we deduce that $ \overline{W} $ is a constant RV. Hence, we may compute its variance:
+\[ Var(\W) = E\left[(\W - E(\W))^2\right] = E \left[ (\frac{1}{k} - E(\frac{1}{k}))^2 \right]
+= E \left[ (\frac{1}{k} - \frac{1}{k})^2 \right] = E (0) = 0.\]
+
+It is impractical to use this "ideal" choice because of the following reasoning. Note that for $ f(x) $ to 
+be a valid pdf of the random variable $ X $, it needs to be normalised, i.e. 
+\[ \intR f(x)dx = 1,\]
+but then also if $ f(x) = kg(x) $, we must have:
+\[ \intR kg(x)dx = 1 \iff k = \dfrac{1}{\intR g(x)dx} = I^{-1}. \]
+It means that in order to be able to choose $f(x)$ such that it is proportional to $g(x)$, we need to know 
+the value of $ I $ to choose the right constant of proportionality. But we don't know it, as we are trying to estimate it.
+Hence, even if we were given $f(x)$ which was guaranteed to satisfy the criterion of proportionality, 
+our experiment wouldn't make much sense as we could just determine the exact value of $ I $ 
+from the constant of proportionality.
+
+\subsection*{(d)}
+
+First let us sample 20 values from  a standard normal distribution using the numpy python library: 
+\begin{center}
+  \begin{table}[H]\centering
+    \pgfplotstableset{
+      % global config, for example in the preamble
+      % these columns/<colname>/.style={<options>} things define a style
+      % which applies to <colname> only.
+      every head row/.style={before row=\toprule,after row=\midrule},
+      every last row/.style={after row=\bottomrule}
+    }
+  \pgfplotstabletypeset[% local config, applies only for this table
+  1000 sep={\,},
+  columns/info/.style={
+  fixed,fixed zerofill,precision=2,showpos,
+  column type=r,
+  }
+  ]
+  {computations/samples.dat}
+
+  \caption{Sampled Data.}
+  \end{table}
+\end{center}
+
+In order to compute the estimate of the integral $ I $ I wrote a program in python that took the data and transformed them according to the following procedure. 
+Firstly, for each of the sampled values I computed the corresponding weight:
+\[ w_i = \frac{g(x_i)}{f(x_i)}\]
+Then in order to get the estimate I took the arithmetic mean of the results:
+\[ \overline{w} = \frac{1}{n} \sum_{i=1}^n \frac{g(x_i)}{f(x_i)} \]
+The obtained value of the estimate for the data above was **insert here **. 
+We can compare it to the actual value of approximately $1.813$. 
+Now in order to calculate the $95\%$ confidence interval, we need to assume that the weights are normally distributed. 
+
+Under this assumption, we also have:
+\[\overline{W} \sim N\left(\mu, \frac{\sigma^2}{n}\right), \]
+where $ \mu = E(W_i) $ and 
+Even under this assumption, we still don't know the variance of the distribution of weights, hence we have to estimate it using the bias corrected 
+sample variance estimate given by:
+\[ s_{n-1}^2 = \frac{1}{n -1} \sum_{i=0}^n(w_i - \overline{w})^2.\]
+Now 
+
+
+\section*{Question 2.}
+
+Let $ F(x) $ be an arbitrary continuous function that increases monotonically from 0 to 1. If we define the random variable $ X $ by the transformation $ X = F^{-1} (U) $ where 
+$ U \sim \text{U}(0, 1) $ we can compute the cdf of $ X $ using its definition as a particular probability:
+\[ F_X (x) = P (X \leq x) \]
+Now if we substitute our definition of X as a transformation of the uniform distribution, we obtain:
+\[P (X \leq x)  = P ( F^{-1} (U) \leq x)\]
+And now since $ F(x) $ is monotonically increasing from 0 to 1, we may deduce that 
+$ F^{-1} (x) $  is well defined and monotonically increasing on interval $ [0,1] $.
+Now since U is uniformly distributed between $ 0 $ and $ 1 $, we can conclude:
+\[  F^{-1} (U) \leq x \iff U \leq F(x)\]
+by applying $ F $ to both sides of the inequality. Hence, coming back to our probability:
+\[P ( F^{-1} (U) \leq x) = P (U \leq F(x)) \]
+And by definition of the cdf we get:
+\[ P (U \leq F(x)) = F_U (F(x)), \]
+where $ F_U $ is the cdf of the uniform distribution $ \text{U}(0, 1) $. If we now recall that it is given by:
+\[ 
+F_U (x) = 
+ \begin{cases}
+  0, \text{ if } x < 0 \\
+  x, \text{ if } 0 \leq x \leq 1 \\
+  1, \text{ if } x \geq 1 \\
+ \end{cases}
+\]
+
+Now since we know that $ F(x) $ increases monotonically between 0 and 1, we know that
+$ 0 \leq F(x) \leq 1 $. And so the second case of $F_U$ applies and hence we get:
+\[ F_U (F(x)) = F (x). \]
+
+And so after combining all of the above steps together, we may deduce: 
+\[  F_X(x) = F(x),  \]
+which was to be shown.
+
+\section*{Question 3.}
+
+\subsection*{(a)}
+
+Given that the pmf of the random variable $X$ representing the mass of a random galaxy 
+distributed approximately as a power law above the minimum threshold $ x_{min} $ is:
+\[ f_X(x) =
+  \begin{cases}
+    c \left(\frac{x}{x_{min}}\right)^{-\lambda} , \text{ if } x \geq x_{\text{min}} \\
+    0,  \text{ if } x \leq x_{\text{min}}
+  \end{cases}
+\]
+
+We need to show that the constant $ c $ is equal to $ \dfrac{\lambda - 1}{x_{\text{min}}} $, given that $ x_{min} $ is a constant and $ \lambda > 1 $. This can be shown using the normalisation condition for the pmf to be valid, i.e. :
+\[ \intR f_X(x) = 1. \] 
+If we substitute the definition of $f_X$ into the left hand side of the equation above, we get:
+\[ \int_{x_{min}}^\infty  c \left(\frac{x}{x_{min}}\right)^{-\lambda} 
+  = \left[ c\left(\frac{x_{\text{min}}}{1 - \lambda}\right) \left(\frac{x}{x_{min}}\right)^{1 - \lambda} \right]_{x_{\text{min}}}^\infty 
+  =  c\left(\frac{x_{\text{min}}}{1 - \lambda}\right) (0 - 1^{1 - \lambda})
+  = c\left(\frac{x_{\text{min}}}{\lambda - 1}\right)
+ \]
+
+ After substituting it back into the initial equation, we get:
+ \[c\left(\frac{x_{\text{min}}}{\lambda - 1}\right) = 1 \iff c =\frac{\lambda - 1}{x_{\text{min}}}, \]
+ which we needed to show.
+
+ As suggested by the coursework specification, from now on we will set $ x_{\text{min}} = 1$ and so the pdf of our random variable $ X $ is given by:
+
+\[ f_X(x) =
+  \begin{cases}
+    (\lambda - 1) \left(x\right)^{-\lambda} , \text{ if } x \geq 1 \\
+    0,  \text{ if } x \leq 1
+  \end{cases}
+\]
+
+ \subsection*{(b)}
+
+Now given the measured masses of $ n $ galaxies: $ \underline{x} = (x_1, x_2, ..., x_n)$ we will derive the MLE for $ \lambda $.
+
+Consider the log-likelihood function for the above sample:
+\[ l(\lambda | \underline{x}) 
+= \sum_{i = 1}^{n} \text{log}\left[ f_{X|\lambda} (x_i) \right]
+=\sum_{i = 1}^{n} \text{log}\left[ (\lambda - 1) (x_i)^{-\lambda}  \right]
+= n \text{log} (\lambda - 1) - \lambda \sum_{i = 1}^{n} \text{log}(x_i) \]
+Now in order to find the $ \lambda $ that maximises the log-likelihood function, we need to look for stationary points of $ l $ by solving the following equation:
+\[ \pdv{l}{\lambda} = 0\]
+And now if we differentiate $ l $ with respect to $ \lambda $, we get:
+\[ \pdv{l}{\lambda} = \frac{n}{\lambda - 1} - \sum_{i = 1}^{n} \text{log} (x_i)\]
+And the expression above is 0 iff:
+\[ \hat{\lambda} = \left(\frac{1}{n} \sum_{i = 1}^{n} \text{log} (x_i) \right)^{-1} + 1  \]
+
+So we have found the value of $ \lambda $ at which our log-likelihood has a stationary point. Now we need to check the second derivative to see if it is in fact a maximum: 
+\[ \pdv[2]{l}{\lambda} = \frac{\partial  }{\partial \lambda} \left(\frac{n}{\lambda - 1} - \sum_{i = 1}^{n} \text{log} (x_i) \right)
+= - \frac{n}{(\lambda - 1)^2}\]
+And now since $ \lambda > 1 $ we deduce that  
+\[- \frac{n}{(\lambda - 1)^2} < 0 \text{ } \forall \text{ } \lambda > 1\] 
+And so it must also be negative in particular for our previously derived $ \hat{\lambda} $.
+Which means that we have found the maximum likelihood estimate. That is because since log$(x)$ is an increasing function, whichever vaule maximises the log-likelihood function will also maximise the regular likelihood function.
+
+\subsection*{(c)}
+The cdf of the power law distribution is given by:
+\[ F_X(x) = \int_{-\infty}^{x} (\lambda - 1) \text{ } x^{-\lambda}
+  \begin {cases}
+  0, \text{ if } x \leq 1 \\
+  \int_1^x (\lambda - 1) \text{ } x^{-\lambda}, \text{ if } x > 1
+  \end {cases} 
+\]
+And the integral from the second case evaluates to:
+\[ \int_1^x (\lambda - 1) \text{ } x^{-\lambda} 
+  = \frac{\lambda - 1}{1 - \lambda} \left[ x^{ 1 - \lambda } \right]_1^x = 1 - x^{1 - \lambda}
+\]
+Hence, we may deduce that the cdf is given by:
+\[ F_X(x) = 
+  \begin {cases}
+  0, \text{ if } x \leq 1 \\
+  1 - x^{ 1 - \lambda} \text{ if } x > 1
+  \end {cases} 
+\]
+
+Now, clearly the range of $ F_X $ is $ [0, 1] $ and it monotonically increases from 0 to 1 and so if we find its inverse, we can apply the method derived in question 2 to numerically generate samples from $ X $. In order to find the inverse consider:
+\[ y = 1 - x^{1 - \lambda} \iff x^{1 - \lambda} = 1 - y \iff x = (1 - y)^{\frac{1}{1 - \lambda}} \]
+Hence, we may deduce that:
+\[ F^{-1} (x) = (1 -x)^{\frac{1}{1 - \lambda}\]
+\end{document}
+
