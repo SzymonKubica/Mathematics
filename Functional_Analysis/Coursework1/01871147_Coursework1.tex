@@ -1,0 +1,231 @@
+\documentclass[11pt]{article}
+%% Package imports
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\usepackage{subcaption}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{physics}
+\usepackage{graphicx}
+\usepackage[left=2cm,right=2cm,top=2cm,bottom=2cm]{geometry}
+\usepackage{multirow}
+\usepackage{booktabs}
+\usepackage{float}
+\usepackage{verbatim}
+\usepackage{amsthm}
+\usepackage{fancyhdr}
+\usepackage[shortlabels]{enumitem}
+\renewcommand{\baselinestretch}{1.5}
+
+%% Commands for inserting big braces.
+\newcommand\lb{\left\lbrace}
+\newcommand\rb{\right\rbrace}
+
+%% Commands for set such that notation
+\newcommand\st{\text{ } | \text{ }}
+
+%% Math symbols
+\newcommand\Q{\mathbb{Q}}
+\newcommand\R{\mathbb{R}}
+\newcommand\N{\mathbb{N}}
+\newcommand\C{\mathbb{C}}
+\newcommand\l{\mathcal{l}}
+
+\parindent 0ex
+
+%% Page style settings
+\pagestyle{fancy}
+\fancyfoot{}
+\fancyhead[L]{\slshape{Functional Analysis}}
+\fancyhead[R]{\slshape{CID: 01871147}}
+\fancyfoot[C]{\thepage}
+\begin{document}
+
+\title{Functional Analysis Autumn 2022 Coursework 1}
+\date{\today}
+\author{CID: 01871147}
+\maketitle
+
+\section*{Problem Set I}
+\subsection*{Exercise I.1.4}
+
+Claim: the following set is not a linear space, because it is not closed under
+\( \oplus \).
+\[ V := \lb f(z) \text{ - analytic} \left|\text{ } \frac{d^2}{dz^2}f - \frac{d}{dz}f - 2z = 0 \rb\]
+Where \(\oplus: V\times V \to V\) is the usual addition of functions:
+\[\forall x \in \C \text{ we have } (f \oplus g)(x) = f(x) + g(x)\]
+
+Proof:
+
+Let \(f,g \in V \) be arbitrary, suppose for contradiciton that \(f \oplus g \in V \),
+then by definition of V we have that:
+\begin{equation}
+  \frac{d^2}{dz^2}(f \oplus g) - \frac{d}{dz}(f \oplus g) - 2z = 0
+\end{equation}
+
+But now also \(f, g \in V\) so the following holds
+\[\frac{d^2}{dz^2}f - \frac{d}{dz}f - 2z = 0\]
+\[\frac{d^2}{dz^2}g - \frac{d}{dz}g - 2z = 0\]
+
+If we add the two equations above and exploit linearity of differentiation we get:
+\begin{equation}
+  \frac{d^2}{dz^2}(f \oplus g) - \frac{d}{dz}(f \oplus g) - 4z = 0
+\end{equation}
+
+Now if we subtract the equation (2) from (1) we obtain:
+\[\forall z \in \C \text{ }  2z = 0,\]
+which is a contradiction and hence we deduce that \(f \oplus g \notin V\) and
+so \(V\) is not closed under vector addition and hence is not a linear space.
+\hfill\blacksquare
+
+\section*{Problem Set II}
+\subsection*{Exercise I.7}
+
+Let $(X, \rho)$ be a metric space, let $\tilde{\rho_z}$ for some $z \in X$
+denote the function described in the question:
+\[
+\begin{split}
+  \tilde{\rho_z}: X & \to \R^+  \\
+  x & \mapsto \rho(z, x)
+\end{split}
+\]
+We'll show continuity of $\tilde{\rho_z}$ using seqential continuity. Let
+$(x_n)_{n \in N}$ be an arbitrary sequence in $X$ convergent to some $x$ with
+respect to $\rho$. We need to show that as $n\to\infty$ we have
+$\tilde{\rho_z}(x_n) \to \tilde{\rho_z}(x)$
+with respect to the Euclidean metric on $\R$. Note that since $\rho$ is a metric
+it satisfies the triangle inequality and hence  $\forall n \in \N$
+\begin{equation}
+\rho(z, x_n) \leq \rho(z, x) + \rho(x, x_n) \implies \rho(z, x_n) - \rho(z, x) \leq \rho(x, x_n)
+.\end{equation}
+
+Similarly using the symmetry of a metric:
+\begin{equation}
+\rho(z, x) \leq \rho(z, x_n) + \rho(x_n, x) \implies \rho(z, x) - \rho(z, x_n) \leq \rho(x, x_n)
+.\end{equation}
+
+Hence, by combining the inequalities (3) and (4) above, we have:
+\begin{equation}
+|\rho(z, x) - \rho(z, x_n)| \leq \rho(x, x_n)
+.\end{equation}
+
+Now let $\epsilon > 0$ be arbitrary, since $(x_n)_{n \in \mathbb{N}}$ converges
+to $x$ w.r.t  $\rho$ we can pick  $N\in \N$ such that  $\forall n \geq N$ we have
+\(
+\rho(x, x_n) < \epsilon
+.\)
+
+Now also by definition of $\tilde{\rho_z}$ and inequality (5), we have:
+\[
+|\tilde{\rho_z}(x) - \tilde{\rho_z}(x_n)| =
+|\rho(z, x) - \rho(z, x_n)| \leq \rho(x, x_n) < \epsilon
+.\]
+
+And so $\tilde{\rho_z}(x_n) \to \tilde{\rho_z}(x)$ as $n \to \infty$ in $\R$
+which implies that $\tilde{\rho_z}$
+is continuous. \hfill\blacksquare
+
+\section*{Problem Set III}
+\subsection*{Exercise I.5 (iii)}
+
+Fix $j \in \N$ and denote $\ell_{p, j} := \lb x \in \ell_p \st x_j = 0 \rb$.
+We'll show that $\ell_{p, j}$ is closed in $\ell_p$ and that it doesn't contain
+any open ball from $\ell_p$.
+
+Let $(x_n)_{n \in \mathbb{N}}$ be an arbitrary sequence in $\ell_{p, j}$ which
+converges to $x \in \ell_p $ in $\ell_p$ w.r.t.  $ \|.\|_p$. We need to show
+that $x$ belongs to $\ell_{p, j}$.
+
+Let $\epsion > 0$ be arbitrary, pick $N \in \N$ such that $\forall n \ge N$ we
+have $\left(\|x_n - x\|_p\right)^p < \epsilon$. We can do that by convergence of
+$(x_n)_{n \in \mathbb{N}}$. Now by the definiton of $ \|.\|_p$. We have:
+\[
+\sum_{i \in N}^\infty |x_{n_i} - x_i|^p < \epsilon
+,\]
+where $x_{n_i}$ denotes the $i$-th term of the sequence $x_n$ which is the
+ $n$-th entry of  $(x_n)_{n \in \mathbb{N}}$
+
+Now since each $|x_{n_i} - x_i|$ is non-negative, it implies that
+\[
+  \forall n \ge N \text{ } \forall i \in N \text{ } |x_{n_i} - x_i| < \epsilon
+.\]
+
+Now fix $i := j$ (the $j$ that we fixed at the beginning). Note that since each
+$x_n$ belongs to $\ell_{p, j}$ we have that $\forall n \in \N \text{ } x_{n_j} = 0 $.
+Hence, we may conclude that $\forall n \in \N \text{ } |x_j| < \epsilon$. But that
+inequality doesn't depend on $n$, so we have: $|x_j| < \epsilon$. Since $\epsilon$
+was arbitrary, we can deduce that:
+ \[
+   \forall \epsilon > 0 \text{ } |x_j| < \epsilon
+.\]
+Which implies that $x_j = 0$, and hence $x \in \ell_{p, j}$. Since $(x_n)_{n \in \mathbb{N}}$
+was arbitrary, we deduce that $\ell_{p, j}$ is closed.
+
+Now suppose for contradiction $\ell_{p, j}$ contained an arbitrary open ball $B(x, \delta)$
+for  $x \in \ell_{p} \text{, } \delta > 0$.
+
+Note that in this case $x \in \ell_{p, j}$ and by definition of an open ball:
+\[
+\forall y \in \ell_p \text{ } \|x - y \|_p < \delta \implies y \in B(x, \delta) \implies y \in \ell_{p, j}
+.\]
+
+If we now define:
+\[
+y := \begin{cases}
+  x_k & k \neq j \\
+  \frac{\delta}{2} & k = j
+\end{cases}
+.\]
+
+And check that indeed $y \in \ell_p$:
+\[
+\|y\|_p \le \|y - x\|_p + \|x\|_p = \frac{\delta}{2} + \|x\|_p < \infty
+,\]
+because $x \in \ell_p$. We can observe that:
+\[
+\|x - y\|_p = \left(\sum_{i \in N}^\infty |x_i - y_i|^p\right)^\frac{1}{p} = \frac{\delta}{2} < \delta
+.\]
+
+Which implies that $y \in B(x, \delta) \subset \ell_{p, j}$.
+But clearly  $y \notin \ell_{p, j}$, as, by definition, $y_j = \frac{\delta}{2} > 0$
+Which is a contradiction hence $\ell_{p, j}$ doesn't contain any open ball
+in $\ell_p$. \hfill\blacksquare
+
+\subsection*{Exercise I.5 (iv)}
+
+Let $S := \lb x \in \ell_p \st \forall j \in \N \text{ } |x_j| \le Cj^{-\frac{2}{p}}\rb$
+for some $C \in (0, \infty)$, we'll show that $S$ is closed in $\ell_p$.
+
+Let $(x_n)_{n \in \mathbb{N}}$ be an arbitrary sequence in $S$ which
+converges to some $x \in \ell_p $ in $\ell_p$ w.r.t.  $ \|.\|_p$. We need to show
+that $x$ belongs to $S$. By definition of $S$, take  $j \in \N$ arbitrary. We need
+to show that
+\[
+|x_j| \le Cj^{-\frac{2}{p}}
+.\]
+
+Let $\epsilon > 0$ be arbitrary, pick $N \in \N$ such that for all $n \ge N$ we
+have
+\[
+\sum_{i \in N}^\infty |x_{n_i} - x_i|^p < \epsilon^p
+.\]
+Now in particular, since each term of the sum above is non-negative, we must
+have that:
+\begin{equation}
+  {|x_{n_j} - x_j|}^p < \epsilon^p \text{ and so } {|x_{n_j} - x_j|} < \epsilon
+.\end{equation}
+
+Now using the triangle inequality, symmetry, the fact that $x_n \in S$, and inequality (6) we have $\forall n \ge N$:
+\[
+  |x_j| \le |x_j - x_{n_j}| + |x_{n_j}| = |x_{n_j} - x_j| + |x_{n_j}|
+  \le |x_{n_j} - x_j| + Cj^{-\frac{2}{p}} < \epsilon + Cj^{-\frac{2}{p}}
+.\]
+
+Hence we obtain that:
+\[
+  \forall \epsilon > 0 \text{ } |x_j| < \epsilon + Cj^{-\frac{2}{p}}
+.\]
+Therefore $|x_j| \le Cj^{-\frac{2}{p}}$ and so $x \in S$. Since  $(x_n)_{n \in \mathbb{N}}$
+ was arbitrary, we deduce that S is closed in $\ell_p$
+
+\end{document}
