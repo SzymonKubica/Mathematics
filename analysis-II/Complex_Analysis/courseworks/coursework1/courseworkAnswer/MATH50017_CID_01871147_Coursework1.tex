@@ -48,13 +48,13 @@
 \section*{Q1.}
 
 Since we know that the function $ \text{Log } z $ is holomorphic everywhere in $\C \setminus (-\infty, 0)$, and also that
-$e^z$ and $\text{sin } z$ are entire, we may deduce that $\sqrt{z}$ defined as $e^{\frac{1}{2} \text{Log} z}$ 
+$e^z$ and $\text{sin } z$ are entire, we may deduce that $\sqrt{z}$ defined as $e^{\frac{1}{2} \text{Log} z}$
 is holomorphic everywhere in $\C \setminus (-\infty, 0)$ and so by composition the function $f(z) = 2\text{sin}(\sqrt{z})$
-is holomorphic inside of that set. Now since $i\frac{\pi^2}{2} \in \C \setminus (-\infty, 0)$ we can apply the 
+is holomorphic inside of that set. Now since $i\frac{\pi^2}{2} \in \C \setminus (-\infty, 0)$ we can apply the
 theorem in the notes:
 \[f'(z_0) = \frac{\partial f}{\partial z} (z_0)\]
 And so we may calculate:
-\[f'\left(i\frac{\pi^2}{2}\right) = \frac{\text{cos}(\sqrt{i\frac{\pi^2}{2}})}{\sqrt{i\frac{\pi^2}{2}}}\] 
+\[f'\left(i\frac{\pi^2}{2}\right) = \frac{\text{cos}(\sqrt{i\frac{\pi^2}{2}})}{\sqrt{i\frac{\pi^2}{2}}}\]
 Now let us compute
 \[\sqrt{i\frac{\pi^2}{2}} = e^{\frac{1}{2} \text{Log} (i\frac{\pi^2}{2})} = e^{\frac{1}{2} \left( \text{log} (\frac{\pi^2}{2}) + i\frac{\pi}{2}\right)} = \frac{\pi}{\sqrt{2}} e^{i\frac{\pi}{4}} = \frac{\pi}{\sqrt{2}}\left(\frac{1}{\sqrt{2}} + i\frac{1}{\sqrt{2}}\right) =  \frac{\pi}{2}(1 + i). \]
 Our expression becomes:
@@ -62,8 +62,8 @@ Our expression becomes:
 We can simplify it using the definition of complex cosine in the numerator and the multiplication by the conjugate in
 the denominator.
 
-\[ = \frac{1}{2} \frac{\left(e^{(i\frac{\pi}{2}(1 + i))} + e^{(-i\frac{\pi}{2}(1 + i))}\right)(1 - i)}{\frac{\pi}{2}(1 + i)(1 - i)} 
-= \frac{1}{\pi} \frac{\left(e^{(\frac{\pi}{2}(i - 1))} + e^{(-\frac{\pi}{2}(i - 1))}\right)(1 - i)}{2} 
+\[ = \frac{1}{2} \frac{\left(e^{(i\frac{\pi}{2}(1 + i))} + e^{(-i\frac{\pi}{2}(1 + i))}\right)(1 - i)}{\frac{\pi}{2}(1 + i)(1 - i)}
+= \frac{1}{\pi} \frac{\left(e^{(\frac{\pi}{2}(i - 1))} + e^{(-\frac{\pi}{2}(i - 1))}\right)(1 - i)}{2}
 = \frac{1}{2\pi} \left(e^{(\frac{\pi}{2}(i - 1))} + e^{(-\frac{\pi}{2}(i - 1))}\right)(1 - i)\]
 If we now simplify it even further, we get:
 
@@ -83,10 +83,10 @@ Now since $ z = z(r, \theta) $ using the total differentiation, we obtain:
 	\frac{\text{d} z}{\text{d} \theta} = \frac{\partial z}{\partial \theta} + \frac{\partial z}{\partial r} \frac{\text{d} r}{\text{d} \theta}
 .\]
 
-Since $\gamma$ is a circle, the radius is constant and so $\frac{\text{d} r}{\text{d} \theta}$ is 0. 
+Since $\gamma$ is a circle, the radius is constant and so $\frac{\text{d} r}{\text{d} \theta}$ is 0.
 Therefore the expression above becomes:
 \[
-	\frac{\text{d} z}{\text{d} \theta} = \frac{\partial z}{\partial \theta} 
+	\frac{\text{d} z}{\text{d} \theta} = \frac{\partial z}{\partial \theta}
 	= \frac{\partial  }{\partial \theta} \left(\rho e^{i\theta}\right)
 	= i\rho e^{i\theta}
 .\]
@@ -94,7 +94,7 @@ Hence we can deduce that the following holds:
 \begin{equation}
 	\text{d}z = i\rho e^{i\theta} \text{d}\theta
 .\end{equation}
-Now let us consider $|\text{d}z|$ 
+Now let us consider $|\text{d}z|$
 \[
 	|\text{d}z| = |i\rho e^{i\theta} \text{d} \theta|
 .\]
@@ -105,7 +105,7 @@ Since we have parameterised $\theta$ to range from $0 \text{ to } 2\pi$ we know 
 .\]
 
 Now from (1) we can also deduce that $\text{d}\theta = \dfrac{\text{d}z}{i \rho e^{i\theta}} = \dfrac{\text{d}z}{iz}$
-Combining the above two together, we deduce: 
+Combining the above two together, we deduce:
 \[
 |\text{d}z| = \rho \frac{\text{d}z}{iz} =  - i\rho \frac{\text{d}z}{z}
 .\]
@@ -127,36 +127,36 @@ By the properties of the conjugate, it becomes:
 
 Now if we note that $\bar{z} = \frac{|z|^2}{z}$ we can rewrite the integral as:
 \[
-	= - \frac{\rho i}{\bar{a}}\oint_\gamma \frac{\text{d}z}{(z - a) (\frac{\rho^2}{\bar{a}} - z)} 
+	= - \frac{\rho i}{\bar{a}}\oint_\gamma \frac{\text{d}z}{(z - a) (\frac{\rho^2}{\bar{a}} - z)}
 .\]
 
-In order to compute the integral above, we need to consider two cases, the first one being when $a$ is interior to 
- $\gamma$ and the second one when  it is outside of the region enclosed by $\gamma$. 
+In order to compute the integral above, we need to consider two cases, the first one being when $a$ is interior to
+ $\gamma$ and the second one when  it is outside of the region enclosed by $\gamma$.
  Observe that in the first case, we clearly have $|a| < \rho$ and $|a| = |\bar{a}|$ hence for all  $z$ on and inside  $\gamma$ we have:
 \[
- \left|\frac{\rho^2}{\bar{a}} - z\right| \ge \left|\frac{\rho^2}{\bar{a}}\right| - |z| = 
+ \left|\frac{\rho^2}{\bar{a}} - z\right| \ge \left|\frac{\rho^2}{\bar{a}}\right| - |z| =
 	 \frac{\rho^2}{|a|} - |z| > \rho - |z| \geq \rho - \rho = 0
 .\]
 
 The last transition in the expression above is because if $z$ is on or inside $\gamma$ then necessarily $|z| \leq \rho$
-Therefore we have managed to show that the norm of $(\frac{\rho^2}{\bar{a}} - z)$ is greater than zero for all $z$ on 
-and inside $\gamma$ and therefore it is never zero, and so we may deduce that  $\dfrac{1}{\frac{\rho^2}{\bar{a}} - z}$ 
+Therefore we have managed to show that the norm of $(\frac{\rho^2}{\bar{a}} - z)$ is greater than zero for all $z$ on
+and inside $\gamma$ and therefore it is never zero, and so we may deduce that  $\dfrac{1}{\frac{\rho^2}{\bar{a}} - z}$
 is holomorphic on and inside $\gamma$ and so we may apply the Cauchy's integral formula to evaluate:
 \[
-	- \frac{\rho i}{\bar{a}}\oint_\gamma \frac{\text{d}z}{(z - a) (\frac{\rho^2}{\bar{a}} - z)} = 
-	- \frac{\rho i}{\bar{a}}\left(2\pi i \frac{1}{\frac{\rho^2}{\bar{a}} - a} \right) 
+	- \frac{\rho i}{\bar{a}}\oint_\gamma \frac{\text{d}z}{(z - a) (\frac{\rho^2}{\bar{a}} - z)} =
+	- \frac{\rho i}{\bar{a}}\left(2\pi i \frac{1}{\frac{\rho^2}{\bar{a}} - a} \right)
 	= \frac{2 \pi \rho}{\rho^2 - |a|^2}
 .\]
 
 Now in the case when $a$ is outside the region enclosed by $\gamma$, then clearly $(a - z)$ is not zero for all points
-	$z$ inside and on  $\gamma$. Therefore  $\frac{1}{z - a}$ is holomorphic on and inside $\gamma$. 
-Now we just need to show that  $\frac{\rho^2}{\bar{a}}$ is interior to $\gamma$ in order to be able to apply the 
+	$z$ inside and on  $\gamma$. Therefore  $\frac{1}{z - a}$ is holomorphic on and inside $\gamma$.
+Now we just need to show that  $\frac{\rho^2}{\bar{a}}$ is interior to $\gamma$ in order to be able to apply the
 Cauchy's integral formula. Observe that since $a$ is outside of the region enclosed by  $\gamma$, we have
-$|\bar{a}| > \rho $ therefore we may deduce that $\frac{\rho^2}{|\bar{a}|} < \rho$ and so necessarily 
+$|\bar{a}| > \rho $ therefore we may deduce that $\frac{\rho^2}{|\bar{a}|} < \rho$ and so necessarily
 $\frac{\rho^2}{\bar{a}}$ is interior to $\gamma$ and so we may apply the Cauchy's integral formula by letting  $f(z) = \frac{1}{z - a}$ around the point $\frac{\rho^2}{\bar{a}}$. Hence we obtain:
 \[
-	- \frac{\rho i}{\bar{a}}\oint_\gamma \frac{\text{d}z}{(z - a) (\frac{\rho^2}{\bar{a}} - z)} = 
-	 \frac{\rho i}{\bar{a}}\oint_\gamma \frac{\text{d}z}{(z - a) (z - \frac{\rho^2}{\bar{a}})} = 
+	- \frac{\rho i}{\bar{a}}\oint_\gamma \frac{\text{d}z}{(z - a) (\frac{\rho^2}{\bar{a}} - z)} =
+	 \frac{\rho i}{\bar{a}}\oint_\gamma \frac{\text{d}z}{(z - a) (z - \frac{\rho^2}{\bar{a}})} =
 	 \frac{\rho i}{\bar{a}}\left(2\pi i \frac{1}{\frac{\rho^2}{\bar{a}} - a} \right) =
 	 - \frac{2 \pi \rho}{\rho^2 - |a|^2}
 .\]
@@ -170,16 +170,16 @@ In order to show the identities required in the question let us consider the fol
 
 If we consider the left-hand side of the equation above as a geometric series, we obtain:
 \[
-	\sum^{n}_{k = 0} e^{ik\theta} = \frac{1 - (e^{i\theta})^{n+1}}{1 - (e^{i\theta})} 
+	\sum^{n}_{k = 0} e^{ik\theta} = \frac{1 - (e^{i\theta})^{n+1}}{1 - (e^{i\theta})}
 .\]
 
 We can now rewrite it and remove the imaginary numbers from the denominator, by multiplying by the conjugate:
 \[
-	= \frac{1 - \text{cos}((n+1)\theta) - i\text{sin}((n+1)\theta)}{(1 - \text{cos}\theta) - i\text{sin}\theta} 
+	= \frac{1 - \text{cos}((n+1)\theta) - i\text{sin}((n+1)\theta)}{(1 - \text{cos}\theta) - i\text{sin}\theta}
 	\frac{(1 - \text{cos}\theta) + i\text{sin}\theta}{(1 - \text{cos}\theta) + i\text{sin}\theta}
 .\]
 
-After multiplying out and simplifying terms using the following trigonometric identities: 
+After multiplying out and simplifying terms using the following trigonometric identities:
 \[
 	\cos\theta\cos((n+1)\theta) + \sin\theta\sin((n+1)\theta) = \cos((n+1)\theta - \theta) = \cos(n\theta)
 ,\]
@@ -192,43 +192,43 @@ we get:
 .\end{equation}
 Let us now consider the real part of the expression above. Observe that we can factor out $\frac{1}{2}$ :
 \begin{equation}
-	\frac{1 - \cos\theta + \cos(n\theta) - \cos((n+1)\theta)}{2(1 - \cos\theta)} = \frac{1}{2} + \frac{\cos(n\theta) - \cos((n+1)\theta)}{1 - \cos\theta}  
+	\frac{1 - \cos\theta + \cos(n\theta) - \cos((n+1)\theta)}{2(1 - \cos\theta)} = \frac{1}{2} + \frac{\cos(n\theta) - \cos((n+1)\theta)}{1 - \cos\theta}
 .\end{equation}
 
 Now let us use the following trigonometric identities:
 \[
-	\cos(2\theta) = 1 - 2\sin^2\theta \implies 1 - \cos\theta = 2 \sin^2\left(\frac{\theta}{2}\right) 
+	\cos(2\theta) = 1 - 2\sin^2\theta \implies 1 - \cos\theta = 2 \sin^2\left(\frac{\theta}{2}\right)
 .\]
 \[
-	\cos((n+1)\theta) = \cos(\left(n+\frac{1}{2}\right)\theta + \frac{\theta}{2}) = 
-	\cos(\left(n+\frac{1}{2}\right)\theta) \cos(\frac{\theta}{2}) - \sin(\left(n+\frac{1}{2}\right)\theta) \sin(\frac{\theta}{2})  
+	\cos((n+1)\theta) = \cos(\left(n+\frac{1}{2}\right)\theta + \frac{\theta}{2}) =
+	\cos(\left(n+\frac{1}{2}\right)\theta) \cos(\frac{\theta}{2}) - \sin(\left(n+\frac{1}{2}\right)\theta) \sin(\frac{\theta}{2})
 .\]
 \[
-	\cos(n\theta) = \cos(\left(n+\frac{1}{2}\right)\theta - \frac{\theta}{2}) = 
-	\cos(\left(n+\frac{1}{2}\right)\theta) \cos(\frac{\theta}{2}) + \sin(\left(n+\frac{1}{2}\right)\theta) \sin(\frac{\theta}{2})  
+	\cos(n\theta) = \cos(\left(n+\frac{1}{2}\right)\theta - \frac{\theta}{2}) =
+	\cos(\left(n+\frac{1}{2}\right)\theta) \cos(\frac{\theta}{2}) + \sin(\left(n+\frac{1}{2}\right)\theta) \sin(\frac{\theta}{2})
 .\]
 
 If we apply the above to (4), we obtain:
 \[
-	= \frac{2\sin(\left(n+\frac{1}{2}\right)\theta) \sin(\frac{\theta}{2})}{4\sin^2\left(\frac{\theta}{2}\right)} = 
+	= \frac{2\sin(\left(n+\frac{1}{2}\right)\theta) \sin(\frac{\theta}{2})}{4\sin^2\left(\frac{\theta}{2}\right)} =
 	\frac{\sin(\left(n+\frac{1}{2}\right)\theta)}{2\sin\left(\frac{\theta}{2}\right)}
 .\]
-And now by (2) we know that the expression above being the real part of the geometric sum has to be equal to 
+And now by (2) we know that the expression above being the real part of the geometric sum has to be equal to
 $\sum^{n}_{n = 0} \text{cos}(n\theta)$
 
-For the second identity we need to consider the imaginary part of the expression (3).  
+For the second identity we need to consider the imaginary part of the expression (3).
 \[
 	\frac{(\sin\theta + \sin(n\theta) - \sin((n+1)\theta)}{2(1 - \cos\theta)}
 .\]
 
 For the denominator we use the same identity as before and for the numerator we use the following two identities
 \[
-	\sin((n+1)\theta) = \sin(\left(n+\frac{1}{2}\right)\theta + \frac{\theta}{2}) = 
-	\sin(\left(n+\frac{1}{2}\right)\theta) \cos(\frac{\theta}{2}) + \cos(\left(n+\frac{1}{2}\right)\theta) \sin(\frac{\theta}{2})  
+	\sin((n+1)\theta) = \sin(\left(n+\frac{1}{2}\right)\theta + \frac{\theta}{2}) =
+	\sin(\left(n+\frac{1}{2}\right)\theta) \cos(\frac{\theta}{2}) + \cos(\left(n+\frac{1}{2}\right)\theta) \sin(\frac{\theta}{2})
 .\]
 \[
-	\sin(n\theta) = \sin(\left(n+\frac{1}{2}\right)\theta - \frac{\theta}{2}) = 
-	\sin(\left(n+\frac{1}{2}\right)\theta) \cos(\frac{\theta}{2}) - \cos(\left(n+\frac{1}{2}\right)\theta) \sin(\frac{\theta}{2})  
+	\sin(n\theta) = \sin(\left(n+\frac{1}{2}\right)\theta - \frac{\theta}{2}) =
+	\sin(\left(n+\frac{1}{2}\right)\theta) \cos(\frac{\theta}{2}) - \cos(\left(n+\frac{1}{2}\right)\theta) \sin(\frac{\theta}{2})
 .\]
 
 Applying those yields:
@@ -252,7 +252,7 @@ Note that now we can compute the $n$-th derivative of $f(z)$
 	 f^{(n)} = (-1)^{n} n! \left[ \frac{1}{(z+1)^{n+1}} - \frac{1}{(z+2)^{n+1}} \right]
 .\]
 
-Hence the Taylor series of $f(z)$ is given by 
+Hence the Taylor series of $f(z)$ is given by
 \[
 	f(z) = \sum^{\infty}_{n=0} \frac{(-1)^{n} n! \left[ \frac{1}{(i+1)^{n+1}} - \frac{1}{(i+2)^{n+1}} \right]}{n!} (z - i)^{n}
 .\]
@@ -262,9 +262,9 @@ That in turn simplifies into
 	f(z) = \sum^{\infty}_{n=0} (-1)^{n}\left[ \frac{1}{(i+1)^{n+1}} - \frac{1}{(i+2)^{n+1}} \right](z - i)^{n}
 .\]
 
-The radius of convergence of that expansion is given by the distance from $i$ to the closest point where  $f(z)$ is 
+The radius of convergence of that expansion is given by the distance from $i$ to the closest point where  $f(z)$ is
 not holomorphic. Clearly,  $f(z)$ is not holomorphic at  $-1 \text{ and } -2$ and so the closest to $i$ of the two is
-$-1$. Hence, as  $|i - (-1)| = \sqrt{2}$  we deduce that the disc of convergence is given by 
+$-1$. Hence, as  $|i - (-1)| = \sqrt{2}$  we deduce that the disc of convergence is given by
 \[
 	|z - i| < \sqrt{2}
 .\]
@@ -279,31 +279,31 @@ Now for all $n \in \N$ define
 \[
 	\gamma_n = \{z = re^{i\theta} | r = \sqrt{\frac{n}{2 + n}} \text{ and } \theta \in [0, 2\pi]\}
 .\]
-Clearly, each one of those paths is contained in $\mathbb{D}$ and so we deduce that for all $n \in \N$, $f(z)$ is 
+Clearly, each one of those paths is contained in $\mathbb{D}$ and so we deduce that for all $n \in \N$, $f(z)$ is
 holomorphic on and inside $\gamma_n$, hence we may apply the Cauchy's integral formula around 0:
 \[
 	|f^{(n)}(0)| = \left|\frac{n !}{2\pi i}\oint_{\gamma_n} \frac{f(\eta)}{(\eta)^{n+1}}\text{d}\eta\right|
 .\]
 
-By using the properties of the complex norm, the M-L inequality, and the fact that on 
+By using the properties of the complex norm, the M-L inequality, and the fact that on
 $\gamma_n$ we have  $|\eta| = r = \sqrt{\frac{n}{2 + n}}$ we may bound the norm of the integral above.
 
 \[
 	\left|\frac{n !}{2\pi i}\oint_{\gamma_n} \frac{f(\eta)}{(\eta)^{n+1}}\text{d}\eta\right| \leq
-	\frac{n !}{2\pi} \sup_{\eta \in \gamma_n} \left|\frac{f(\eta)}{(\eta)^{n+1}}\right|2\pi r = 
-	n! \sup_{\eta \in \gamma_n} \frac{|f(\eta)|}{r^{n}} 
+	\frac{n !}{2\pi} \sup_{\eta \in \gamma_n} \left|\frac{f(\eta)}{(\eta)^{n+1}}\right|2\pi r =
+	n! \sup_{\eta \in \gamma_n} \frac{|f(\eta)|}{r^{n}}
 .\]
 
-Now by the given assumption for all $\eta$ in $\gamma_n$ we have 
+Now by the given assumption for all $\eta$ in $\gamma_n$ we have
 $|f(\eta)| \leq \frac{1}{1 - |\eta|^2} = \frac{1}{1 - r^2}$
 And so we get
 \[
 	n! \sup_{\eta \in \gamma_n} \frac{|f(\eta)|}{r^{n}} \leq n!\frac{1}{1 - r^2}\frac{1}{r^n}
 .\]
 
-After substituting our defined value of $r = \sqrt{\frac{n}{2 + n}}$ we get 
+After substituting our defined value of $r = \sqrt{\frac{n}{2 + n}}$ we get
 \[
-	n!\frac{1}{1 - r^2}\frac{1}{r^n} = n!\frac{1}{1 - \frac{n}{2+n}}\left(\frac{2+n}{n}\right)^{\frac{n}{2}} = 
+	n!\frac{1}{1 - r^2}\frac{1}{r^n} = n!\frac{1}{1 - \frac{n}{2+n}}\left(\frac{2+n}{n}\right)^{\frac{n}{2}} =
 	n!\frac{2 + n}{2}\left(\frac{2+n}{n}\right)^{\frac{n}{2}} =
 	\frac{n!(2+n)^{\frac{(2+n)}{2}}}{2n^{\frac{n}{2}}}
 .\]
